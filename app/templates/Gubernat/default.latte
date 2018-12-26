@@ -1,0 +1,65 @@
+
+{block content}
+<h1 n:block=title>Gubernát</h1>
+<div id="statistics-container">
+    <div id="statistics-label">
+        <ul>
+            <li><span class="white bold">Pozemky:</span></li>
+            <li><span class="white bold">Síla:</span></li>
+            <li><span class="white bold">Obyvatel:</span></li>
+            <li><span class="white bold">Nezaměstnaní:</span></li>
+        </ul>
+        <ul>
+            <li><span class="white bold">Jídlo:</span></li>
+            <li><span class="white bold">Zlato:</span></li>
+            <li><span class="white bold">Kameny:</span></li>
+            <li><span class="white bold">Zbraně:</span></li>
+        </ul>
+    </div>
+    <div id="statistics-values">
+        <ul>
+            <li><span class="value">17 846</span></span></li>
+            <li><span class="value">2 568 566</span></span></li>
+            <li><span class="value">86 455</span></span></li>
+            <li><span class="value">0</span></span></li>
+        </ul>
+        <ul>
+            <li><span class="value">{$resources['food']}</span></li>
+            <li><span class="value">{$resources['gold']}</span></li>
+            <li><span class="value">{$resources['stones']}</span></li>
+            <li><span class="value">{$resources['weapons']}</span></li>
+        </ul>
+    </div>
+    <div id="statistics-income">
+        <ul>
+            <li>+100</li>
+            <li>+256</li>
+            <li>0</li>
+            <li>0</li>
+        </ul>
+        <ul>
+            <li>0</li>
+            <li>+1 000</li>
+            <li>+11 242</li>
+            <li>+1 125 235</li>
+        </ul>
+    </div>
+    <div id="statistics-outcome">
+        <ul>
+            <li></li>
+            <li></li>
+            <li>-586</li>
+            <li></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<div id="gubernat-info-container">
+    {$username}
+</div>
+

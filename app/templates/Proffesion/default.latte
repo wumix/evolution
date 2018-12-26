@@ -1,0 +1,27 @@
+
+{block content}
+<div class="container">
+<div class="menu">
+    <ul>
+        <li><a n:href=Gubernat:default>Gubernát</a></li>
+        <li><a n:href=Land:default>Pozemky</a></li>
+        
+    </ul>
+</div>
+<div class="content">
+<h1 n:block=title>Gubernát</h1>
+<ul>
+    <li><span class="white bold">Pozemky:</span></li>
+    <li><span class="white bold">Síla:</span></li>
+    <li><span class="white bold">Obyvatel:</span></li>
+    <li><span class="white bold">Nezaměstnaní:</span></li>
+</ul>
+<ul>
+    <li><span class="white bold">Jídlo:</span><span class="value"> {$resources['food']}</span></li>
+    <li><span class="white bold">Zlato:</span><span class="value"> {$resources['gold']}</span></li>
+    <li><span class="white bold">Kameny:</span><span class="value"> {$resources['stones']}</span></li>
+    <li><span class="white bold">Zbraně:</span><span class="value"> {$resources['weapons']}</span></li>
+</ul>
+</div>
+</div>
+

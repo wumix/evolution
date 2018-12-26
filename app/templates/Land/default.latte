@@ -1,0 +1,18 @@
+
+{block content}
+<form n:name=landPurchaseForm class=form>
+    Množství pozemků: <br><input n:name=land>
+    <br>
+    <input n:name=buy class="btn btn-default">
+</form>
+
+
+<form n:name=autoLandPurchaseForm class=form>
+    {foreach $form['percent']->items as $key => $label}
+        <label n:name=percent class="radio">{$key}</label>
+        <input n:name="percent:$key">    
+    {/foreach}
+    <br>
+    <input n:name=change class="btn btn-default">
+</form>
+

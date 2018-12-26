@@ -1,0 +1,101 @@
+body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #7c6200;
+    background: #6ea960;
+}
+#header {
+    width: 80%;
+    height: 100px;
+    margin: 0 auto;
+    font-size: 44px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #105100;
+}
+div.flash {
+    color: black;
+    background: #FFF9D7;
+    border: 1px solid #E2C822;
+    padding: 1em;
+    margin: 1em 0;
+}
+
+a[href^="#error:"] {
+    background: red;
+    color: white;
+}
+
+form th, form td {
+    vertical-align: top;
+    font-weight: normal;
+}
+
+form th {
+    text-align: right;
+}
+
+form .required label {
+    font-weight: bold;
+}
+
+form .error {
+    color: #D00;
+    font-weight: bold;
+}
+.menu {
+    float: left;
+    width: 15%;
+    background-color: red;
+    height: max-content;
+}
+.content {
+    float: left;
+    width: 85%;
+    background-color: gray;
+    height: max-content;
+}
+.content h1 {
+    text-align: center;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
+}
+.bold {
+    font-weight: bold;
+}
+.white {
+    color: white;
+}
+ul {
+    list-style: none;
+}
+#statistics-container {
+    width: 70%;
+    float: left;
+}
+#statistics-label {
+    width: 25%;
+    float: left;
+}
+#statistics-values{
+    width: 25%;
+    float: left;
+}
+#statistics-income {
+    width: 25%;
+    float: left;
+}
+#statistics-outcome {
+    color: red;
+    width: 25%;
+    float: left;
+}
+#gubernat-info-container {
+    width: 30%;
+    background-color: pink;
+    float: left;
+}

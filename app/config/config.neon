@@ -1,0 +1,43 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+#
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=mydb'
+	user: 'root'
+	password: 
+	options:
+		lazy: yes
+
+# Nastavení výchozích chybových hlášek pro formuláře.
+forms:
+        messages:
+                REQUIRED: 'Povinné pole.'
+                EMAIL: 'Neplatná emailová adresa.'
+
+# Nastavení služeb v rámci celé aplikace.
+services:
+        router: App\RouterFactory::createRouter # Nastavení služby routeru aplikace.
+        authenticator: App\Model\UserManager    # Nastavení služby pro přihlašování do aplikace.
+
+        # Definice dalších služeb dále přístupných pomocí DI.
+        - App\Forms\FormFactory
+        - App\Forms\SignInFormFactory
+        - App\Forms\SignUpFormFactory
+        - App\Forms\AutoLandPurchaseFormFactory
+        - App\Forms\LandPurchaseFormFactory
+        - App\Model\ResourcesManager
+        - App\Model\GubernatManager
