@@ -13,7 +13,7 @@ class LandPurchaseFormFactory {
     
     use SmartObject;
     
-    /** @var FormFactory Továrna na formuláře321. */
+    /** @var FormFactory Továrna na formuláře323213211. */
     private $formFactory;
     
     /** @var GubernatManager Model pro správu gubernátu. */
