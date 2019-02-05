@@ -5,6 +5,7 @@ namespace App\Presenters;
 use App\Presenters\BasePresenter;
 use App\Forms\AutoLandPurchaseFormFactory;
 use App\Forms\LandPurchaseFormFactory;
+use App\Model\GubernatManager;
 
 /**
  * Presenter pro vykreslování správy pozemků
@@ -12,23 +13,22 @@ use App\Forms\LandPurchaseFormFactory;
  */
 class LandPresenter extends BasePresenter
 {
-
-    /** @var autoLandPurchaseFormFactory */
+    
     private $autoLandPurchaseFormFactory;
     private $landPurchaseFormFactory;
-
+    private $gubernatManager;
 
     /**
-     * LandPresenter constructor.
      * @param AutoLandPurchaseFormFactory $autoLandPurchaseFormFactory
      */
-    public function __construct(AutoLandPurchaseFormFactory $autoLandPurchaseFormFactory, LandPurchaseFormFactory $landPurchaseFormFactory)
+    public function __construct(AutoLandPurchaseFormFactory $autoLandPurchaseFormFactory, LandPurchaseFormFactory $landPurchaseFormFactory, GubernatManager $gubernatManager)
     {
         $this->autoLandPurchaseFormFactory = $autoLandPurchaseFormFactory;
         $this->landPurchaseFormFactory = $landPurchaseFormFactory;
+        $this->gubernatManager = $gubernatManager;
     }
     
-    /** Předá údaje o gubernátu do šablony hlavního přehledu gubernátu */
+
     public function renderDefault()
     {
             
@@ -44,6 +44,8 @@ class LandPresenter extends BasePresenter
     protected function createComponentLandPurchaseForm()
     {
         return $this->landPurchaseFormFactory->create(function (Form $form, ArrayHash $values) {
+            $userID = $this->user->identity->getId();
+            $this->gubernatManager->updateLand($userID, $land);
             $this->flashMessage('Pozemky byly nakoupeny');
         });
     }

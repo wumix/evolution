@@ -4,7 +4,6 @@ namespace App\Model;
 
 /**
  * Model pro správu uživatelů v systému.
- * @package App\Model
  */
 class ResourcesManager extends DatabaseManager
 {

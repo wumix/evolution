@@ -4,23 +4,29 @@ namespace App\Presenters;
 
 use App\Presenters\BasePresenter;
 use App\Model\ResourcesManager;
+use App\Model\GubernatManager;
+use App\Model\ProffesionsManager;
 
 /**
- * Presenter pro vykreslování hlavního přehledu gubernátu
- * @package App\CoreModule\Presenters
+ * Presenter pro vykreslování přehledu profesí
  */
-class ProffesionPresenter extends BasePresenter
+class ProffesionsPresenter extends BasePresenter
 {
 
     private $resourcesManager;
+    private $gubernatManager;
+    private $proffesionsManager;
 
     /**
-     * Konstruktor s injektovaným modelem pro správu surovin
+     * Konstruktor s injektovanými modely
      * @param ResourcesManager $resourcesManager automaticky injektovaný model pro správu surovin
+     * @param GubernatManager $gubernatManager automaticky injektovaný model pro správu gubernátu
      */
-    public function __construct(ResourcesManager $resourcesManager)
+    public function __construct(ResourcesManager $resourcesManager, GubernatManager $gubernatManager, ProffesionsManager $proffesionsManager)
     {
         $this->resourcesManager = $resourcesManager;
+        $this->gubernatManager = $gubernatManager;
+        $this->proffesionsManager = $proffesionsManager;
     }
     
     /** Předá údaje o gubernátu do šablony hlavního přehledu gubernátu */

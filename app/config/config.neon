@@ -41,3 +41,4 @@ services:
         - App\Forms\LandPurchaseFormFactory
         - App\Model\ResourcesManager
         - App\Model\GubernatManager
+        - App\Model\ProffesionsManager

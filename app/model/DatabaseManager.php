@@ -8,7 +8,6 @@ use Nette\SmartObject;
 /**
  * Základní model pro všechny ostatní databázové modely aplikace.
  * Poskytuje přístup k práci s databází.
- * @package App\Model
  */
 abstract class DatabaseManager
 {

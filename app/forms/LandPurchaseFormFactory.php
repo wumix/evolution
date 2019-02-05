@@ -13,18 +13,11 @@ class LandPurchaseFormFactory {
     
     use SmartObject;
     
-    /** @var FormFactory Továrna na formuláře. */
     private $formFactory;
-    
-    /** @var GubernatManager Model pro správu gubernátu. */
     private $gubernatManager;
-    
-    /** @var User přihlášený uživatel. */
     private $user;
 
-
     /**
-     * Konstruktor s injektovanou továrnou na formuláře a modelem pro správu gubernátu
      * @param FormFactory $factory automaticky injektovaná továrna na formuláře
      * @param GubernatManager $gubernatManager automaticky injektovaný model pro správu gubernátu
      */
@@ -52,7 +45,9 @@ class LandPurchaseFormFactory {
         $form->addSubmit('buy', 'Koupit');
 
         $form->onSuccess[] = function (Form $form, ArrayHash $values) use ($onSuccess) {
-               /**
+            $userID = $this->user->identity->getId();
+            $this->gubernatManager->updateLand($userID, $values['land']);
+            /**
                 * Přidat pozemky
                 * Odstranit zlato
                 */

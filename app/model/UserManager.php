@@ -11,7 +11,6 @@ use Nette\Security\Passwords;
 
 /**
  * Model pro správu uživatelů v systému.
- * @package App\Model
  */
 class UserManager extends DatabaseManager implements IAuthenticator
 {
@@ -105,7 +104,6 @@ class UserManager extends DatabaseManager implements IAuthenticator
 
 /**
  * Výjimka pro duplicitní uživatelské jméno.
- * @package App\Model
  */
 class DuplicateNameException extends Exception
 {
