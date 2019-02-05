@@ -22,7 +22,12 @@ class ProffesionsFormFactory {
      * @param FormFactory $factory automaticky injektovaná továrna na formuláře
      * @param GubernatManager $gubernatManager automaticky injektovaný model pro správu gubernátu
      */
-    public function __construct(FormFactory $factory, GubernatManager $gubernatManager, ProffesionsManager $proffesionsManager, User $user) {
+    public function __construct(
+            FormFactory $factory,
+            GubernatManager $gubernatManager,
+            ProffesionsManager $proffesionsManager,
+            User $user)
+    {
         $this->formFactory = $factory;
         $this->gubernatManager = $gubernatManager;
         $this->proffesionsManager = $proffesionsManager;
@@ -36,22 +41,46 @@ class ProffesionsFormFactory {
      * @param string $label popisek profese (česky)
      * @return Form formulář pro automatické nakupování pozemků
      */
-    public function create(callable $onSuccess, $proffesion, $label) {
+    public function create() 
+    {
+        $proffesions = array(
+            array('farmer', 'Farmáři'),
+            array('builder', 'Zedníci'),
+            array('trader', 'Obchodníci'),
+            array('miner', 'Kameníci'),
+            array('blacksmith', 'Kováři')
+        );
         $form = $this->formFactory->create();
-        $form->addText($proffesion, $label)
-                ->addRule(FORM::INTEGER)
-                ->setRequired(TRUE);
-
-        $form->addSubmit('add', 'Přidat');
-        $form->addSubmit('remove', 'Odebrat');
-
-        $form->onSuccess[] = function (Form $form, ArrayHash $values) use ($onSuccess) {
-            /**
-             * Přidat nebo odebrat lidi do profese
-             */
-        };
+        for ($i = 0; $i < 5; $i++) {
+            $form->addText($proffesions[$i][0], $proffesions[$i][1])
+                    ->addRule(FORM::INTEGER)
+                    ->setDefaultValue(0)
+                    ->setRequired(true);
+            $form->addSubmit('add'.$proffesions[$i][0], 'Přidat')
+                    ->onClick[] = [$this, 'proffesionsFormAdd'];
+            $form->addSubmit('rem'.$proffesions[$i][0], 'Odebrat')
+                    ->onClick[] = [$this, 'proffesionsFormRemove'];
+        }
 
         return $form;
+    }
+
+    public function proffesionsFormAdd(\Nette\Forms\Controls\SubmitButton $button)
+    {
+        $form = $button->getForm();
+        $values = $form->getValues();
+        $proffesion = substr($button->name,3);
+        $userID = $this->user->identity->getId();
+        $this->proffesionsManager->addProffesion($userID, $values[$proffesion], $proffesion);
+    }
+
+    public function proffesionsFormRemove(\Nette\Forms\Controls\SubmitButton $button) 
+    {
+        $form = $button->getForm();
+        $values = $form->getValues();
+        $proffesion = substr($button->name,3);
+        $userID = $this->user->identity->getId();
+        $this->proffesionsManager->addProffesion($userID, -$values[$proffesion], $proffesion);
     }
 
 }

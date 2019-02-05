@@ -30,17 +30,11 @@ class LandPresenter extends BasePresenter {
     }
 
     protected function createComponentAutoLandPurchaseForm() {
-        return $this->autoLandPurchaseFormFactory->create(function (Form $form, ArrayHash $values) {
-                    $this->flashMessage('Změněno');
-                });
+        return $this->autoLandPurchaseFormFactory->create();
     }
 
     protected function createComponentLandPurchaseForm() {
-        return $this->landPurchaseFormFactory->create(function (Form $form, ArrayHash $values) {
-                    $userID = $this->user->identity->getId();
-                    $this->gubernatManager->updateLand($userID, $land);
-                    $this->flashMessage('Pozemky byly nakoupeny');
-                });
+        return $this->landPurchaseFormFactory->create();
     }
 
 }

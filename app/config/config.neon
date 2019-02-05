@@ -39,6 +39,7 @@ services:
         - App\Forms\SignUpFormFactory
         - App\Forms\AutoLandPurchaseFormFactory
         - App\Forms\LandPurchaseFormFactory
+        - App\Forms\ProffesionsFormFactory
         - App\Model\ResourcesManager
         - App\Model\GubernatManager
         - App\Model\ProffesionsManager

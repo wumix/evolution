@@ -5,7 +5,6 @@ namespace App\Forms;
 use Nette\Application\UI\Form;
 use App\Model\GubernatManager;
 use Nette\SmartObject;
-use Nette\Utils\ArrayHash;
 use Nette\Security\User;
 
 class LandPurchaseFormFactory {
@@ -20,7 +19,7 @@ class LandPurchaseFormFactory {
      * @param FormFactory $factory automaticky injektovaná továrna na formuláře
      * @param GubernatManager $gubernatManager automaticky injektovaný model pro správu gubernátu
      */
-    public function __construct(FormFactory $factory, GubernatManager $gubernatManager, User $user) {
+    public function __construct (FormFactory $factory, GubernatManager $gubernatManager, User $user) {
         $this->formFactory = $factory;
         $this->gubernatManager = $gubernatManager;
         $this->user = $user;
@@ -28,29 +27,24 @@ class LandPurchaseFormFactory {
 
     /**
      * Vytváří a vrací formulář pro automatické nakupování pozemků.
-     * @param callable $onSuccess specifická funkce, která se vykoná po úspěšném odeslání formuláře
      * @return Form formulář pro automatické nakupování pozemků
      */
-    public function create(callable $onSuccess) {
+    public function create () {
         $land = $this->gubernatManager->getLand($this->user->identity->getId());
         $form = $this->formFactory->create();
         $form->addText('land', 'Množství nakoupených pozemků')
                 ->addRule(FORM::INTEGER)
                 ->setRequired(TRUE);
-
-
-        $form->addSubmit('buy', 'Koupit');
-
-        $form->onSuccess[] = function (Form $form, ArrayHash $values) use ($onSuccess) {
-            $userID = $this->user->identity->getId();
-            $this->gubernatManager->updateLand($userID, $values['land']);
-            /**
-             * Přidat pozemky
-             * Odstranit zlato
-             */
-        };
-
+        $form->addSubmit('buy', 'Koupit')
+                ->onClick[] = [$this, 'landPurchaseFormBuy'];
         return $form;
+    }
+
+    public function landPurchaseFormBuy (\Nette\Forms\Controls\SubmitButton $button) {
+        $form = $button->getForm();
+        $values = $form->getValues();
+        $userID = $this->user->identity->getId();
+        $this->gubernatManager->updateLand($userID, $values['land']);
     }
 
 }

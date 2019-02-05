@@ -5,7 +5,6 @@ namespace App\Forms;
 use Nette\Application\UI\Form;
 use App\Model\GubernatManager;
 use Nette\SmartObject;
-use Nette\Utils\ArrayHash;
 use Nette\Security\User;
 
 class AutoLandPurchaseFormFactory {
@@ -20,7 +19,7 @@ class AutoLandPurchaseFormFactory {
      * @param FormFactory $factory automaticky injektovaná továrna na formuláře
      * @param GubernatManager $gubernatManager automaticky injektovaný model pro správu gubernátu
      */
-    public function __construct(FormFactory $factory, GubernatManager $gubernatManager, User $user) {
+    public function __construct (FormFactory $factory, GubernatManager $gubernatManager, User $user) {
         $this->formFactory = $factory;
         $this->gubernatManager = $gubernatManager;
         $this->user = $user;
@@ -31,7 +30,7 @@ class AutoLandPurchaseFormFactory {
      * @param callable $onSuccess specifická funkce, která se vykoná po úspěšném odeslání formuláře
      * @return Form formulář pro automatické nakupování pozemků
      */
-    public function create(callable $onSuccess) {
+    public function create () {
         $defaultValue = $this->gubernatManager->getLandAutoPurchase($this->user->identity->getId());
         $form = $this->formFactory->create();
         $form->addRadioList('percent', 'Procent z příjmu', [
@@ -48,13 +47,16 @@ class AutoLandPurchaseFormFactory {
                     '100' => 100,
                 ])
                 ->setDefaultValue($defaultValue);
-        $form->addSubmit('change', 'Změnit');
-
-        $form->onSuccess[] = function (Form $form, ArrayHash $values) use ($onSuccess) {
-            $this->gubernatManager->updateLandAutoPurchase($this->user->identity->getId(), $values->percent);
-        };
-
+        $form->addSubmit('change', 'Změnit')
+            ->onClick[] = [$this, 'landAutoPurchaseFormChange'];
         return $form;
+    }
+    
+    public function landAutoPurchaseFormChange (\Nette\Forms\Controls\SubmitButton $button) {
+        $form = $button->getForm();
+        $values = $form->getValues();
+        $userID = $this->user->identity->getId();
+        $this->gubernatManager->updateLandAutoPurchase($userID, $values['percent']);
     }
 
 }
