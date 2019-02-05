@@ -8,45 +8,37 @@ use Nette\Application\UI\Form;
 use Nette\Utils\ArrayHash;
 
 /**
- * Presenter pro vykreslování administrační sekce.
- * @package App\CoreModule\Presenters
+ * Presenter pro vykreslování registrace.
  */
-class RegisterPresenter extends BasePresenter
-{
-    /** @var SignUpFormFactory */
+class RegisterPresenter extends BasePresenter {
+
     private $signUpFactory;
-    
 
     /**
-     * AdministrationPresenter constructor.
      * @param SignUpFormFactory $signUpFactory
      */
-    public function __construct(SignUpFormFactory $signUpFactory)
-    {
+    public function __construct(SignUpFormFactory $signUpFactory) {
         parent::__construct();
         $this->signUpFactory = $signUpFactory;
     }
 
-
-
     /** Předá jméno přihlášeného uživatele do šablony administrační stránky. */
-    public function renderDefault()
-    {
-        if ($this->user->isLoggedIn()){ $this->template->username = $this->user->identity->username;}
+    public function renderDefault() {
+        if ($this->user->isLoggedIn()) {
+            $this->template->username = $this->user->identity->username;
+        }
     }
 
     /**
      * Vytváří a vrací přihlašovací formulář pomocí továrny.
      * @return Form přihlašovací formulář
      */
-    protected function createComponentSignUpForm()
-    {
+    protected function createComponentSignUpForm() {
         return $this->signUpFactory->create(function (Form $form, ArrayHash $values) {
-            $this->flashMessage('Byl jste úspěšně zaregistrován.');
-            $this->user->login($values->username, $values->password); // Přihlásíme se.
-            $this->redirect('Gubernat:default');
-            
-        });
+                    $this->flashMessage('Byl jste úspěšně zaregistrován.');
+                    $this->user->login($values->username, $values->password); // Přihlásíme se.
+                    $this->redirect('Gubernat:default');
+                });
     }
 
 }

@@ -13,7 +13,6 @@ abstract class DatabaseManager
 {
     use SmartObject;
 
-    /** @var Context Služba pro práci s databází. */
     protected $database;
 
     /**

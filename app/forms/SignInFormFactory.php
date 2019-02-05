@@ -10,25 +10,19 @@ use Nette\Utils\ArrayHash;
 
 /**
  * Továrna na přihlašovací formulář.
- * @package App\Forms
  */
-class SignInFormFactory
-{
+class SignInFormFactory {
+
     use SmartObject;
 
-    /** @var FormFactory Továrna na formuláře. */
     private $formFactory;
-
-    /** @var User Uživatel. */
     private $user;
 
     /**
-     * Konstruktor s injektovanou továrnou na formuláře a uživatelem.
      * @param FormFactory $factory automaticky injektovaná továrna na formuláře
      * @param User        $user    automaticky injektovaný uživatel
      */
-    public function __construct(FormFactory $factory, User $user)
-    {
+    public function __construct(FormFactory $factory, User $user) {
         $this->formFactory = $factory;
         $this->user = $user;
     }
@@ -38,8 +32,7 @@ class SignInFormFactory
      * @param callable $onSuccess specifická funkce, která se vykoná po úspěšném odeslání formuláře
      * @return Form přihlašovací formulář
      */
-    public function create(callable $onSuccess)
-    {
+    public function create(callable $onSuccess) {
         $form = $this->formFactory->create();
         $form->addText('username', 'Jméno')->setRequired();
         $form->addPassword('password', 'Heslo');
@@ -58,4 +51,5 @@ class SignInFormFactory
 
         return $form;
     }
+
 }

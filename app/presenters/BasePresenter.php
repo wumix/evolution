@@ -4,7 +4,6 @@ namespace App\Presenters;
 
 use Nette;
 
-
 /**
  * Base presenter for all application presenters.
  */

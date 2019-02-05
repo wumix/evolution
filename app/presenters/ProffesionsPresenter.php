@@ -18,7 +18,6 @@ class ProffesionsPresenter extends BasePresenter
     private $proffesionsManager;
 
     /**
-     * Konstruktor s injektovanými modely
      * @param ResourcesManager $resourcesManager automaticky injektovaný model pro správu surovin
      * @param GubernatManager $gubernatManager automaticky injektovaný model pro správu gubernátu
      */
