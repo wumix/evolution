@@ -1,0 +1,47 @@
+{block content}
+<div style="width: 100%">
+    <form n:name=buildingsForm class=form>
+        Profesní budovy
+        <div style="width: 100%; float: left;">
+    <div style="float: left">
+        Farmáři <br>
+        Zednící <br>
+        Obchodníci <br>
+        Kameníci <br>
+        Kováři <br>
+    </div>
+    <div style="float: left">
+        {$buildings['farmer']} {$proffesions['farmer']}<br>
+        {$buildings['builder']} {$proffesions['builder']}<br>
+        {$buildings['trader']} {$proffesions['trader']}<br>
+        {$buildings['miner']} {$proffesions['miner']}<br>
+        {$buildings['blacksmith']} {$proffesions['blacksmith']}<br>
+    </div>
+    <div style="float: left">
+        <input n:name=farmer><input n:name=addfarmer class="btn btn-default"><input n:name=checkfarmer><input n:name=remfarmer class="btn btn-default"><br>
+        <input n:name=builder><input n:name=addbuilder class="btn btn-default"><input n:name=checkbuilder ><input n:name=rembuilder  class="btn btn-default"><br>
+        <input n:name=trader><input n:name=addtrader class="btn btn-default"><input n:name=checktrader><input n:name=remtrader class="btn btn-default"><br>
+        <input n:name=miner><input n:name=addminer class="btn btn-default"><input n:name=checkminer><input n:name=remminer class="btn btn-default"><br>
+        <input n:name=blacksmith><input n:name=addblacksmith class="btn btn-default"><input n:name=checkblacksmith><input n:name=remblacksmith class="btn btn-default"><br>
+    </div>
+        </div>
+    <br>
+    Ostatní budovy
+    <div style="width: 100%; float: left;">
+        <div style="float: left">
+        Obytné domy <br>
+        Věže <br>
+    </div>
+    <div style="float: left">
+        {$buildings['house']} 564<br>
+        {$buildings['tower']} 568<br>
+    </div>
+    <div style="float: left">
+        <input n:name=house><input n:name=addhouse class="btn btn-default"><input n:name=checkhouse><input n:name=remhouse class="btn btn-default"><br>
+        <input n:name=tower><input n:name=addtower class="btn btn-default"><input n:name=checktower><input n:name=remtower class="btn btn-default"><br>
+    </div>
+    </div>
+    </form>
+</div>
+
+

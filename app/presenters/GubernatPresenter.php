@@ -5,6 +5,7 @@ namespace App\Presenters;
 use App\Presenters\BasePresenter;
 use App\Model\ResourcesManager;
 use App\Model\GubernatManager;
+use App\Classes\Number;
 
 /**
  * Presenter pro vykreslování hlavního přehledu gubernátu
@@ -26,8 +27,8 @@ class GubernatPresenter extends BasePresenter {
     public function renderDefault() {
         $userID = $this->user->identity->getId();
         $this->template->username = $this->user->identity->username;
-        $this->template->resources = $this->resourcesManager->getResources($userID);
-        $this->template->land = $this->gubernatManager->getLand($userID);
+        $this->template->resources = Number::addSpacing($this->resourcesManager->getResources($userID));
+        $this->template->land = Number::addSpacing($this->gubernatManager->getLand($userID));
     }
 
 }

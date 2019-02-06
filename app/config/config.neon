@@ -40,6 +40,8 @@ services:
         - App\Forms\AutoLandPurchaseFormFactory
         - App\Forms\LandPurchaseFormFactory
         - App\Forms\ProffesionsFormFactory
+        - App\Forms\BuildingsFormFactory
         - App\Model\ResourcesManager
         - App\Model\GubernatManager
         - App\Model\ProffesionsManager
+        - App\Model\BuildingsManager

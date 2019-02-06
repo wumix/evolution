@@ -22,7 +22,12 @@ class ProffesionsPresenter extends BasePresenter {
      * @param ResourcesManager $resourcesManager automaticky injektovaný model pro správu surovin
      * @param GubernatManager $gubernatManager automaticky injektovaný model pro správu gubernátu
      */
-    public function __construct(ResourcesManager $resourcesManager, GubernatManager $gubernatManager, ProffesionsManager $proffesionsManager, ProffesionsFormFactory $proffesionsFormFactory) {
+    public function __construct(
+            ResourcesManager $resourcesManager,
+            GubernatManager $gubernatManager,
+            ProffesionsManager $proffesionsManager,
+            ProffesionsFormFactory $proffesionsFormFactory)
+    {
         $this->resourcesManager = $resourcesManager;
         $this->gubernatManager = $gubernatManager;
         $this->proffesionsManager = $proffesionsManager;

@@ -4,6 +4,16 @@ body {
     color: #7c6200;
     background: #6ea960;
 }
+
+/* Skrytí šipek u číselných vstupů formulářů*/
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 #header {
     width: 80%;
     height: 100px;
