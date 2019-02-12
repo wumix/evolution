@@ -14,6 +14,7 @@ class ProfessionsPresenter extends BasePresenter {
 
     private $professionsManager;
     private $professionsFormFactory;
+    private $data;
 
     public function __construct(
             ProfessionsManager $professionsManager,
@@ -26,11 +27,12 @@ class ProfessionsPresenter extends BasePresenter {
     /** Předá údaje o gubernátu do šablony hlavního přehledu gubernátu */
     public function renderDefault() {
         $userID = $this->user->identity->getId();
-        $this->template->data = Number::addSpacing($this->professionsManager->getProfessionsData($userID));
+        $this->data = $this->professionsManager->getProfessionsData($userID);
+        $this->template->data = Number::addSpacing($this->data);
     }
 
     protected function createComponentProfessionsForm() {
-        return $this->professionsFormFactory->create();
+        return $this->professionsFormFactory->create($this->data);
     }
 
 }

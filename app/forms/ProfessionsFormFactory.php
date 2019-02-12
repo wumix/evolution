@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Forms;
-use Nette\Application\UI\Form;
+
 use App\Model\ProfessionsManager;
+use Nette\Application\UI\Form;
 use Nette\SmartObject;
 use Nette\Security\User;
 
@@ -13,6 +14,7 @@ class ProfessionsFormFactory {
     private $formFactory;
     private $professionsManager;
     private $user;
+    private $data;
 
     public function __construct(
             FormFactory $factory,
@@ -28,8 +30,9 @@ class ProfessionsFormFactory {
      * Vytváří a vrací formulář pro přidávání a odebírání lidí z profesí
      * @return Form formulář pro automatické nakupování pozemků
      */
-    public function create() 
+    public function create($data) 
     {
+        $this->data = $data;
         $professions = array(
             array('farmer', 'Farmáři'),
             array('trader', 'Obchodníci'),
@@ -39,7 +42,7 @@ class ProfessionsFormFactory {
             array('blacksmith', 'Kováři')
         );
         $form = $this->formFactory->create();
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < count($professions); $i++) {
             $form->addText($professions[$i][0], $professions[$i][1])
                     ->addRule(FORM::INTEGER)
                     ->setDefaultValue(0)
@@ -79,8 +82,13 @@ class ProfessionsFormFactory {
         $values = $form->getValues();
         $profession = substr($button->name,3);
         if($values['check'.$profession] == true) {
+            if($this->data[$profession] < $values[$profession]) {
+                $values[$profession] = $this->data['profession'];
+            }
+            else {
             $userID = $this->user->identity->getId();
             $this->professionsManager->addProfession($userID, -$values[$profession], $profession);
+            }
         }
         $form->reset();
         $form->setDefaults([
@@ -94,3 +102,4 @@ class ProfessionsFormFactory {
     }
 
 }
+

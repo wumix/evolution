@@ -1,65 +1,55 @@
 
 {block content}
 <div class="title">Gubernát</div>
-<div id="statistics-container">
-    <div id="statistics-label">
-        <ul>
-            <li><span class="white bold">Nezaměstnaní:</span></li>
-            <li><span class="white bold">Obyvatel:</span></li>
-            <li><span class="white bold">Pozemky:</span></li>
-            <li><span class="white bold">Síla:</span></li>
-        </ul>
-        <ul>
-            <li><span class="white bold">Jídlo:</span></li>
-            <li><span class="white bold">Zlato:</span></li>
-            <li><span class="white bold">Kameny:</span></li>
-            <li><span class="white bold">Zbraně:</span></li>
-        </ul>
+<div class="gubernat-container">
+    <div class="minor-title">Přehled gubernátu</div>
+    <div class="gubernat-label">
+        <span class="white bold">Nezaměstnaní:</span><br>
+        <span class="white bold">Obyvatel:</span><br>
+        <span class="white bold">Pozemky:</span><br>
+        <span class="white bold">Síla:</span><br>
+        <br>
+        <span class="white bold">Jídlo:</span><br>
+        <span class="white bold">Zlato:</span><br>
+        <span class="white bold">Kameny:</span><br>
+        <span class="white bold">Zbraně:</span><br>
     </div>
-    <div id="statistics-values">
-        <ul>
-            <li><span class="value">{$data['unemployed']}</span></span></li>
-            <li><span class="value">{$data['citizens']}</span></span></li>
-            <li><span class="value">{$data['land']}</span></span></li>
-            <li><span class="value">{$data['power']}</span></span></li>
-        </ul>
-        <ul>
-            <li><span class="value">{$data['food']}</span></li>
-            <li><span class="value">{$data['gold']}</span></li>
-            <li><span class="value">{$data['stones']}</span></li>
-            <li><span class="value">{$data['weapons']}</span></li>
-        </ul>
+    <div class="gubernat-values">
+        <span class="value">{$data['unemployed']}</span><br>
+        <span class="value">{$data['citizens']}</span><br>
+        <span class="value">{$data['land']}</span><br>
+        <span class="value">{$data['power']}</span><br>
+        <br>
+        <span class="value">{$data['food']}</span><br>
+        <span class="value">{$data['gold']}</span><br>
+        <span class="value">{$data['stones']}</span><br>
+        <span class="value">{$data['weapons']}</span><br>
     </div>
-    <div id="statistics-income">
-        <ul>
-            <li>+153</li>
-            <li>+256</li>
-            <li>0</li>
-            <li>0</li>
-        </ul>
-        <ul>
-            <li>{$data['farmer_gain']}</li>
-            <li>{$data['trader_gain'] + $data['alchemist_gain']}</li>
-            <li>{$data['miner_gain']}</li>
-            <li>{$data['blacksmith_gain']}</li>
-        </ul>
+    <div class="gubernat-income">
+        +153<br>
+        +256<br>
+        0<br>
+        0<br>
+        <br>
+        {$data['farmer_gain']}<br>
+        {$data['trader_gain'] + $data['alchemist_gain']}<br>
+        {$data['miner_gain']}<br>
+        {$data['blacksmith_gain']}<br>
     </div>
-    <div id="statistics-outcome">
-        <ul>
-            <li></li>
-            <li></li>
-            <li>-586</li>
-            <li></li>
-        </ul>
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+    <div class="gubernat-outcome">
+            <br>
+            -361<br>
+            <br>
+            <br>
+            
+            <br>
+            
+            <br>
+            <br>
+            <br>
+            <br>
     </div>
+    <div class="gubernat-info-container">asdad</div>
 </div>
-<div id="gubernat-info-container">
-    {$username}
-</div>
+
 

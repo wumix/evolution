@@ -1,15 +1,15 @@
 {block content}
 <div class="title">Profese</div>
-<div id="professions-container">
+<div class="professions-container">
     <div class="minor-title">Profese</div>
-    <div id="professions-header-container">
-        <div id="professions-label-title">Profese</div>
-        <div id="professions-ammount-title">Aktuální počet</div>
-        <div id="professions-trained-title">Zaučeno</div>
-        <div id="professions-earnings-title">Zisk</div>    
+    <div class="professions-header-container">
+        <div class="professions-label-title">Profese</div>
+        <div class="professions-ammount-title">Aktuální počet</div>
+        <div class="professions-trained-title">Zaučeno</div>
+        <div class="professions-earnings-title">Zisk</div>    
     </div>
-    <form n:name=professionsForm class=form>
-    <div id="professions-label">
+    <form n:name=professionsForm>
+    <div class="professions-label">
         Farmáři <br>
         Obchodníci <br>
         Alchymisti <br>
@@ -17,7 +17,7 @@
         Kameníci <br>
         Kováři <br>
     </div>
-    <div id="professions-ammount">
+    <div class="professions-ammount">
         {$data['farmer']} <br>
         {$data['trader']} <br>
         {$data['alchemist']} <br>
@@ -25,7 +25,7 @@
         {$data['miner']} <br>
         {$data['blacksmith']} <br>
     </div>
-    <div id="professions-trained">
+    <div class="professions-trained">
         100% <br>
         100% <br>
         58% <br>
@@ -33,7 +33,7 @@
         16% <br>
         89% <br>
     </div>
-    <div id="professions-earnings">
+    <div class="professions-earnings">
         {$data['farmer_gain']} <br>
         {$data['trader_gain']} <br>
         {$data['alchemist_gain']} <br>
@@ -41,7 +41,7 @@
         {$data['miner_gain']} <br>
         {$data['blacksmith_gain']} <br>
     </div>
-    <div style="float: left">
+    <div class="professions-form">
         <input n:name=farmer><input n:name=addfarmer class="btn btn-default"><input n:name=checkfarmer><input n:name=remfarmer class="btn btn-default"><br>
         <input n:name=trader><input n:name=addtrader class="btn btn-default"><input n:name=checktrader><input n:name=remtrader class="btn btn-default"><br>
         <input n:name=alchemist><input n:name=addalchemist class="btn btn-default"><input n:name=checkalchemist><input n:name=remalchemist class="btn btn-default"><br>

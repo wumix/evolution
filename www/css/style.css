@@ -119,48 +119,80 @@ ul {
     text-align: left;
     width: 98%;
     padding: 0 1% 0 1%;
-    margin: 10px 0 0px 0;
+    margin: 10px 0 10px 0;
     background-color: #105100;
     float: left;
 }
-#statistics-container {
-    width: 70%;
-    float: left;
-}
-#statistics-label {
-    width: 25%;
-    float: left;
-}
-#statistics-values{
-    width: 25%;
-    float: left;
-}
-#statistics-income {
-    width: 25%;
-    float: left;
-}
-#statistics-outcome {
-    color: red;
-    width: 25%;
-    float: left;
-}
-#gubernat-info-container {
-    width: 30%;
-    background-color: pink;
-    float: left;
-}
-#professions-container {
+/* Gubernát 
+*
+*
+*/
+.gubernat-container {
     width: 96%;
     float: left;
     margin: 10px 1% 10px 1%;
     padding: 5px 1% 5px 1%;
 }
-#professions-header-container {
+.gubernat-label {
+    width: 14%;
+    float: left;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    margin-left: 1%;
+}
+.gubernat-values{
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+}
+.gubernat-income {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+}
+.gubernat-outcome {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+}
+.gubernat-info-container {
+    width: 30%;
+    margin: 3.5% 3.5% 0 3.5%;
+    height: 150px;
+    background-color: pink;
+    float: left;
+}
+/* Pozemky 
+*
+*
+*/
+.land-container {
+    width: 96%;
+    float: left;
+    margin: 10px 1% 10px 1%;
+    padding: 5px 1% 5px 1%;
+}
+/* Profese 
+*
+*
+*/
+.professions-container {
+    width: 96%;
+    float: left;
+    margin: 10px 1% 10px 1%;
+    padding: 5px 1% 5px 1%;
+}
+.professions-header-container {
     width: 100%;
     float: left;
     padding: 5px 0 5px 0;
 }
-#professions-label-title {
+.professions-label-title {
     float: left;
     width: 14%;
     font-weight: bold;
@@ -169,7 +201,7 @@ ul {
     font-size: 18px;
     margin-left: 1%;
 }
-#professions-ammount-title {
+.professions-ammount-title {
     width: 15%;
     float: left;
     font-weight: bold;
@@ -177,7 +209,7 @@ ul {
     text-align: center;
     font-size: 18px;
 }
-#professions-trained-title {
+.professions-trained-title {
     width: 15%;
     float: left;
     font-weight: bold;
@@ -185,7 +217,7 @@ ul {
     text-align: center;
     font-size: 18px;
 }
-#professions-earnings-title {
+.professions-earnings-title {
     width: 15%;
     float: left;
     font-weight: bold;
@@ -193,7 +225,7 @@ ul {
     text-align: center;
     font-size: 18px;
 }
-#professions-label {
+.professions-label {
     width: 14%;
     float: left;
     font-weight: bold;
@@ -201,24 +233,31 @@ ul {
     color: white;
     margin-left: 1%;
 }
-#professions-ammount {
+.professions-ammount {
     width: 15%;
     float: left;
     font-weight: bold;
     text-align: center;
 }
-#professions-trained {
+.professions-trained {
     width: 15%;
     float: left;
     font-weight: bold;
     text-align: center;
 }
-#professions-earnings {
+.professions-earnings {
     width: 15%;
     float: left;
     font-weight: bold;
     text-align: center;
 }
+.professions-form {
+    float: left;
+}
+/* Budovy 
+*
+*
+*/
 .buildings-container {
     width: 96%;
     float: left;
