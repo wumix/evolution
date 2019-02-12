@@ -9,6 +9,8 @@ use Nette;
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
+    
+    
     public function actionLogout()
     {
         $this->user->logout();

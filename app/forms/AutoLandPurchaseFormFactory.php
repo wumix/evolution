@@ -27,11 +27,10 @@ class AutoLandPurchaseFormFactory {
 
     /**
      * Vytváří a vrací formulář pro automatické nakupování pozemků.
-     * @param callable $onSuccess specifická funkce, která se vykoná po úspěšném odeslání formuláře
+     * @param Int $autoLandPurchase procento nakupování pozemků
      * @return Form formulář pro automatické nakupování pozemků
      */
-    public function create () {
-        $defaultValue = $this->gubernatManager->getLandAutoPurchase($this->user->identity->getId());
+    public function create ($autoLandPurchase) {
         $form = $this->formFactory->create();
         $form->addRadioList('percent', 'Procent z příjmu', [
                     '0' => 0,
@@ -46,7 +45,7 @@ class AutoLandPurchaseFormFactory {
                     '90' => 90,
                     '100' => 100,
                 ])
-                ->setDefaultValue($defaultValue);
+                ->setDefaultValue($autoLandPurchase);
         $form->addSubmit('change', 'Změnit')
             ->onClick[] = [$this, 'landAutoPurchaseFormChange'];
         return $form;

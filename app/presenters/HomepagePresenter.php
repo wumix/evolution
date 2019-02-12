@@ -15,13 +15,15 @@ use Nette\Utils\ArrayHash;
 class HomepagePresenter extends BasePresenter {
 
     private $signInFactory;
+    private $signUpFactory;
 
     /**
      * @param SignInFormFactory $signInFactory
      * @param SignUpFormFactory $signUpFactory
      */
-    public function __construct(SignInFormFactory $signInFactory) {
+    public function __construct(SignInFormFactory $signInFactory, SignUpFormFactory $signUpFactory) {
         $this->signInFactory = $signInFactory;
+        $this->signUpFactory = $signUpFactory;
     }
 
     /**

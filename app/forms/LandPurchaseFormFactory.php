@@ -30,7 +30,6 @@ class LandPurchaseFormFactory {
      * @return Form formulář pro automatické nakupování pozemků
      */
     public function create() {
-        $land = $this->gubernatManager->getLand($this->user->identity->getId());
         $form = $this->formFactory->create();
         $form->addText('land', 'Množství nakoupených pozemků')
                 ->addRule(FORM::INTEGER)

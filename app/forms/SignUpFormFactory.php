@@ -47,7 +47,7 @@ class SignUpFormFactory {
             'orc' => 'Skřeti',
             'fairy' => 'Víly',
             'undead' => 'Nemrtví',
-            'dark_elf' => 'Temní elfové',
+            'demon' => 'Démoni',
         ]);
         $form->addSubmit('register', 'Registrovat');
 

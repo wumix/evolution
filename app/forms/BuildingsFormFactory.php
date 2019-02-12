@@ -3,9 +3,6 @@
 namespace App\Forms;
 
 use Nette\Application\UI\Form;
-use App\Model\GubernatManager;
-use App\Model\ProffesionsManager;
-use App\Model\ResourcesManager;
 use App\Model\BuildingsManager;
 use Nette\SmartObject;
 use Nette\Security\User;
@@ -15,24 +12,15 @@ class BuildingsFormFactory {
     use SmartObject;
 
     private $formFactory;
-    private $gubernatManager;
-    private $proffesionsManager;
-    private $resourcesManager;
     private $buildingsManager;
     private $user;
 
     public function __construct(
             FormFactory $factory,
-            GubernatManager $gubernatManager,
-            ProffesionsManager $proffesionsManager,
-            ResourcesManager $resourcesManager,
             BuildingsManager $buildingsManager,
             User $user)
     {
         $this->formFactory = $factory;
-        $this->gubernatManager = $gubernatManager;
-        $this->proffesionsManager = $proffesionsManager;
-        $this->resourcesManager = $resourcesManager;
         $this->buildingsManager = $buildingsManager;
         $this->user = $user;
     }
@@ -45,15 +33,16 @@ class BuildingsFormFactory {
     {
         $buildings = array(
             array('farmer', 'Farmáři'),
-            array('builder', 'Zedníci'),
             array('trader', 'Obchodníci'),
+            array('alchemist', 'Alchymisti'),
+            array('builder', 'Zedníci'),
             array('miner', 'Kameníci'),
             array('blacksmith', 'Kováři'),
             array('house', 'Obytené domy'),
             array('tower', 'Věže')
         );
         $form = $this->formFactory->create();
-        for ($i = 0; $i < 7; $i++) {
+        for ($i = 0; $i < 8; $i++) {
             $form->addText($buildings[$i][0], $buildings[$i][1])
                     ->addRule(FORM::INTEGER)
                     ->setDefaultValue(0)
@@ -79,8 +68,9 @@ class BuildingsFormFactory {
         $form->reset();
         $form->setDefaults([
             'farmer' => 0,
-            'builder' => 0,
             'trader' => 0,
+            'alchemist' => 0,
+            'builder' => 0,   
             'miner' => 0,
             'blacksmith' => 0,
             'house' => 0,
@@ -100,10 +90,13 @@ class BuildingsFormFactory {
         $form->reset();
         $form->setDefaults([
             'farmer' => 0,
-            'builder' => 0,
             'trader' => 0,
+            'alchemist' => 0,
+            'builder' => 0,   
             'miner' => 0,
-            'blacksmith' => 0
+            'blacksmith' => 0,
+            'house' => 0,
+            'tower' => 0
         ]);
     }
 

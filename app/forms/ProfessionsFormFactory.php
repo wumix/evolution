@@ -1,31 +1,26 @@
 <?php
 
 namespace App\Forms;
-
 use Nette\Application\UI\Form;
-use App\Model\GubernatManager;
-use App\Model\ProffesionsManager;
+use App\Model\ProfessionsManager;
 use Nette\SmartObject;
 use Nette\Security\User;
 
-class ProffesionsFormFactory {
+class ProfessionsFormFactory {
 
     use SmartObject;
 
     private $formFactory;
-    private $gubernatManager;
-    private $proffesionsManager;
+    private $professionsManager;
     private $user;
 
     public function __construct(
             FormFactory $factory,
-            GubernatManager $gubernatManager,
-            ProffesionsManager $proffesionsManager,
+            ProfessionsManager $professionsManager,
             User $user)
     {
         $this->formFactory = $factory;
-        $this->gubernatManager = $gubernatManager;
-        $this->proffesionsManager = $proffesionsManager;
+        $this->professionsManager = $professionsManager;
         $this->user = $user;
     }
 
@@ -35,61 +30,64 @@ class ProffesionsFormFactory {
      */
     public function create() 
     {
-        $proffesions = array(
+        $professions = array(
             array('farmer', 'Farmáři'),
-            array('builder', 'Zedníci'),
             array('trader', 'Obchodníci'),
+            array('alchemist', 'Alchymisti'),
+            array('builder', 'Zedníci'),
             array('miner', 'Kameníci'),
             array('blacksmith', 'Kováři')
         );
         $form = $this->formFactory->create();
-        for ($i = 0; $i < 5; $i++) {
-            $form->addText($proffesions[$i][0], $proffesions[$i][1])
+        for ($i = 0; $i < 6; $i++) {
+            $form->addText($professions[$i][0], $professions[$i][1])
                     ->addRule(FORM::INTEGER)
                     ->setDefaultValue(0)
                     ->setRequired(true)
                     ->addRule(FORM::MIN,'Musí být kladné číslo',0);
-            $form->addSubmit('add'.$proffesions[$i][0], 'Přidat')
-                    ->onClick[] = [$this, 'proffesionsFormAdd'];
-            $form->addCheckbox('check'.$proffesions[$i][0]);
-            $form->addSubmit('rem'.$proffesions[$i][0], 'Odebrat')
-                    ->onClick[] = [$this, 'proffesionsFormRemove'];
+            $form->addSubmit('add'.$professions[$i][0], 'Zaměstnat')
+                    ->onClick[] = [$this, 'professionsFormAdd'];
+            $form->addCheckbox('check'.$professions[$i][0]);
+            $form->addSubmit('rem'.$professions[$i][0], 'Propustit')
+                    ->onClick[] = [$this, 'professionsFormRemove'];
         }
 
         return $form;
     }
 
-    public function proffesionsFormAdd(\Nette\Forms\Controls\SubmitButton $button)
+    public function professionsFormAdd(\Nette\Forms\Controls\SubmitButton $button)
     {
         $form = $button->getForm();
         $values = $form->getValues();
-        $proffesion = substr($button->name,3);
+        $profession = substr($button->name,3);
         $userID = $this->user->identity->getId();
-        $this->proffesionsManager->addProffesion($userID, $values[$proffesion], $proffesion);
+        $this->professionsManager->addProfession($userID, $values[$profession], $profession);
         $form->reset();
         $form->setDefaults([
             'farmer' => 0,
-            'builder' => 0,
             'trader' => 0,
+            'alchemist' => 0,
+            'builder' => 0,
             'miner' => 0,
             'blacksmith' => 0
         ]);
     }
 
-    public function proffesionsFormRemove(\Nette\Forms\Controls\SubmitButton $button) 
+    public function professionsFormRemove(\Nette\Forms\Controls\SubmitButton $button) 
     {
         $form = $button->getForm();
         $values = $form->getValues();
-        $proffesion = substr($button->name,3);
-        if($values['check'.$proffesion] == true) {
+        $profession = substr($button->name,3);
+        if($values['check'.$profession] == true) {
             $userID = $this->user->identity->getId();
-            $this->proffesionsManager->addProffesion($userID, -$values[$proffesion], $proffesion);
+            $this->professionsManager->addProfession($userID, -$values[$profession], $profession);
         }
         $form->reset();
         $form->setDefaults([
             'farmer' => 0,
-            'builder' => 0,
             'trader' => 0,
+            'alchemist' => 0,
+            'builder' => 0,
             'miner' => 0,
             'blacksmith' => 0
         ]);

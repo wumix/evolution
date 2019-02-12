@@ -18,7 +18,7 @@ session:
 database:
 	dsn: 'mysql:host=127.0.0.1;dbname=mydb'
 	user: 'root'
-	password: 
+	password: 'root'
 	options:
 		lazy: yes
 
@@ -32,6 +32,8 @@ forms:
 services:
         router: App\RouterFactory::createRouter # Nastavení služby routeru aplikace.
         authenticator: App\Model\UserManager    # Nastavení služby pro přihlašování do aplikace.
+        cacheStorage:
+            factory: Nette\Caching\Storages\DevNullStorage
 
         # Definice dalších služeb dále přístupných pomocí DI.
         - App\Forms\FormFactory
@@ -39,9 +41,11 @@ services:
         - App\Forms\SignUpFormFactory
         - App\Forms\AutoLandPurchaseFormFactory
         - App\Forms\LandPurchaseFormFactory
-        - App\Forms\ProffesionsFormFactory
+        - App\Forms\ProfessionsFormFactory
         - App\Forms\BuildingsFormFactory
+        - App\Forms\ArmyFormFactory
         - App\Model\ResourcesManager
         - App\Model\GubernatManager
-        - App\Model\ProffesionsManager
+        - App\Model\ProfessionsManager
         - App\Model\BuildingsManager
+        - App\Model\ArmyManager

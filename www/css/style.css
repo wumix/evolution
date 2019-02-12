@@ -4,7 +4,13 @@ body {
     color: #7c6200;
     background: #6ea960;
 }
-
+/* Formuláře 
+*
+*
+*/
+input[type='submit'] {
+ 
+}
 /* Skrytí šipek u číselných vstupů formulářů*/
 input[type='number'] {
     -moz-appearance: textfield;
@@ -12,6 +18,12 @@ input[type='number'] {
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+input[type='number'] {
+    width: 20%;
+    text-align: center;
+    margin: 0 5px 0 5px;
+    border: none;
 }
 
 #header {
@@ -83,6 +95,34 @@ form .error {
 ul {
     list-style: none;
 }
+.title {
+    width: 98%;
+    margin: 10px 1% 0px 1%;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #105100;
+}
+.main-title {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 98%;
+    margin: 10px 1% 0px 1%;
+    background-color: #105100;
+}
+.minor-title {
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    width: 98%;
+    padding: 0 1% 0 1%;
+    margin: 10px 0 0px 0;
+    background-color: #105100;
+    float: left;
+}
 #statistics-container {
     width: 70%;
     float: left;
@@ -108,4 +148,145 @@ ul {
     width: 30%;
     background-color: pink;
     float: left;
+}
+#professions-container {
+    width: 96%;
+    float: left;
+    margin: 10px 1% 10px 1%;
+    padding: 5px 1% 5px 1%;
+}
+#professions-header-container {
+    width: 100%;
+    float: left;
+    padding: 5px 0 5px 0;
+}
+#professions-label-title {
+    float: left;
+    width: 14%;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    font-size: 18px;
+    margin-left: 1%;
+}
+#professions-ammount-title {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+#professions-trained-title {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+#professions-earnings-title {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+#professions-label {
+    width: 14%;
+    float: left;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    margin-left: 1%;
+}
+#professions-ammount {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+}
+#professions-trained {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+}
+#professions-earnings {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+}
+.buildings-container {
+    width: 96%;
+    float: left;
+    margin: 10px 1% 10px 1%;
+    padding: 5px 1% 5px 1%;
+}
+.buildings-header-container {
+    width: 100%;
+    float: left;
+    padding: 5px 0 5px 0;
+}
+.buildings-label-title {
+    float: left;
+    width: 14%;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    font-size: 18px;
+    margin-left: 1%;
+    
+}
+.buildings-ammount-title {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+.buildings-workers-title {
+    width: 18%;
+    float: left;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+.buildings-bonus-title {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+.buildings-label {
+    width: 14%;
+    float: left;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    margin-left: 1%;
+}
+.buildings-ammount {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+}
+.buildings-workers{
+    width: 18%;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+}
+.buildings-bonus{
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    text-align: center;
 }

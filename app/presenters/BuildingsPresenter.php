@@ -3,33 +3,23 @@
 namespace App\Presenters;
 
 use App\Presenters\BasePresenter;
-use App\Model\ResourcesManager;
-use App\Model\GubernatManager;
-use App\Model\ProffesionsManager;
 use App\Model\BuildingsManager;
 use App\Forms\BuildingsFormFactory;
-
+use App\Classes\Buildings;
+use App\Classes\Number;
 /**
  * Presenter pro vykreslování přehledu profesí
  */
 class BuildingsPresenter extends BasePresenter {
 
-    private $resourcesManager;
-    private $gubernatManager;
-    private $proffesionsManager;
     private $buildingsManager;
     private $buildingsFormFactory;
+    private $data;
 
     public function __construct(
-            ResourcesManager $resourcesManager,
-            GubernatManager $gubernatManager,
-            ProffesionsManager $proffesionsManager,
             BuildingsManager $buildingsManager,
             BuildingsFormFactory $buildingsFormFactory)
     {
-        $this->resourcesManager = $resourcesManager;
-        $this->gubernatManager = $gubernatManager;
-        $this->proffesionsManager = $proffesionsManager;
         $this->buildingsManager = $buildingsManager;
         $this->buildingsFormFactory = $buildingsFormFactory;
     }
@@ -37,9 +27,20 @@ class BuildingsPresenter extends BasePresenter {
     /** Předá údaje o gubernátu do šablony hlavního přehledu gubernátu */
     public function renderDefault() {
         $userID = $this->user->identity->getId();
-        $this->template->username = $this->user->identity->username;
-        $this->template->proffesions = $this->proffesionsManager->getProffesions($userID);
-        $this->template->buildings = $this->buildingsManager->getBuildings($userID);
+        $buildings = array(
+            'farmer',
+            'trader',
+            'alchemist',
+            'builder',
+            'miner',
+            'blacksmith',
+        );
+        $this->data = $this->buildingsManager->getBuildingsData($userID);
+        
+        foreach ($buildings as $building) {
+            $this->data[$building.'_bonus'] = Buildings::getBonus($this->data[$building.'_building'], $this->data[$building])*100;
+        }
+        $this->template->data = Number::addSpacing($this->data);
     }
 
     protected function createComponentBuildingsForm() {

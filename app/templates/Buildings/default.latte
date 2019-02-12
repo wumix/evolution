@@ -1,46 +1,86 @@
 {block content}
-<div style="width: 100%">
+<div class="title">Budovy</div>
+
+<div class="buildings-container">
+    <div class="minor-title">Profesní budovy</div>
+    <div class="buildings-header-container">
+        <div class="buildings-label-title">Budovy</div>
+        <div class="buildings-ammount-title">Počet budov</div>
+        <div class="buildings-workers-title">Počet pracovníků</div>
+        <div class="buildings-bonus-title">Bonus</div>    
+    </div>
     <form n:name=buildingsForm class=form>
-        Profesní budovy
-        <div style="width: 100%; float: left;">
-    <div style="float: left">
+ 
+    <div class="buildings-label">
         Farmáři <br>
-        Zednící <br>
         Obchodníci <br>
+        Alchymisti <br>
+        Zednící <br> 
         Kameníci <br>
         Kováři <br>
     </div>
-    <div style="float: left">
-        {$buildings['farmer']} {$proffesions['farmer']}<br>
-        {$buildings['builder']} {$proffesions['builder']}<br>
-        {$buildings['trader']} {$proffesions['trader']}<br>
-        {$buildings['miner']} {$proffesions['miner']}<br>
-        {$buildings['blacksmith']} {$proffesions['blacksmith']}<br>
+    <div class="buildings-ammount">
+        {$data['farmer_building']}<br>
+        {$data['trader_building']}<br>
+        {$data['alchemist_building']}<br>
+        {$data['builder_building']}<br>
+        {$data['miner_building']}<br>
+        {$data['blacksmith_building']}<br>
+    </div>
+    <div class="buildings-workers">
+        {$data['farmer']}<br>
+        {$data['trader']}<br>
+        {$data['alchemist']}<br>
+        {$data['builder']}<br>
+        {$data['miner']}<br>
+        {$data['blacksmith']}<br>
+    </div>
+    <div class="buildings-bonus">
+        {$data['farmer_bonus']}%<br>
+        {$data['trader_bonus']}%<br>
+        {$data['alchemist_bonus']}%<br>
+        {$data['builder_bonus']}%<br>
+        {$data['miner_bonus']}%<br>
+        {$data['blacksmith_bonus']}%<br>
     </div>
     <div style="float: left">
         <input n:name=farmer><input n:name=addfarmer class="btn btn-default"><input n:name=checkfarmer><input n:name=remfarmer class="btn btn-default"><br>
-        <input n:name=builder><input n:name=addbuilder class="btn btn-default"><input n:name=checkbuilder ><input n:name=rembuilder  class="btn btn-default"><br>
         <input n:name=trader><input n:name=addtrader class="btn btn-default"><input n:name=checktrader><input n:name=remtrader class="btn btn-default"><br>
+        <input n:name=alchemist><input n:name=addalchemist class="btn btn-default"><input n:name=checkalchemist><input n:name=remalchemist class="btn btn-default"><br>
+        <input n:name=builder><input n:name=addbuilder class="btn btn-default"><input n:name=checkbuilder ><input n:name=rembuilder  class="btn btn-default"><br>
         <input n:name=miner><input n:name=addminer class="btn btn-default"><input n:name=checkminer><input n:name=remminer class="btn btn-default"><br>
         <input n:name=blacksmith><input n:name=addblacksmith class="btn btn-default"><input n:name=checkblacksmith><input n:name=remblacksmith class="btn btn-default"><br>
     </div>
-        </div>
+        
     <br>
-    Ostatní budovy
-    <div style="width: 100%; float: left;">
-        <div style="float: left">
+<div class="minor-title">Ostatní budovy</div>
+    <div class="buildings-header-container">
+        <div class="buildings-label-title">Budovy</div>
+        <div class="buildings-ammount-title">Počet budov</div>
+        <div class="buildings-workers-title">Obyvatel/Obrana</div>
+        <div class="buildings-bonus-title">Bonus</div>    
+    </div>
+    <div class="buildings-label">
         Obytné domy <br>
         Věže <br>
     </div>
-    <div style="float: left">
-        {$buildings['house']} 564<br>
-        {$buildings['tower']} 568<br>
+    <div class="buildings-ammount">
+        {$data['house']}<br>
+        {$data['tower']}<br>
+    </div>
+    <div class="buildings-workers">
+        5 894<br>
+        132 568<br>
+    </div>
+    <div class="buildings-bonus">
+        <br>
+        40%<br>
     </div>
     <div style="float: left">
         <input n:name=house><input n:name=addhouse class="btn btn-default"><input n:name=checkhouse><input n:name=remhouse class="btn btn-default"><br>
         <input n:name=tower><input n:name=addtower class="btn btn-default"><input n:name=checktower><input n:name=remtower class="btn btn-default"><br>
     </div>
-    </div>
+    
     </form>
 </div>
 

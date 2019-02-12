@@ -1,13 +1,13 @@
 
 {block content}
-<h1 n:block=title>Gubernát</h1>
+<div class="title">Gubernát</div>
 <div id="statistics-container">
     <div id="statistics-label">
         <ul>
+            <li><span class="white bold">Nezaměstnaní:</span></li>
+            <li><span class="white bold">Obyvatel:</span></li>
             <li><span class="white bold">Pozemky:</span></li>
             <li><span class="white bold">Síla:</span></li>
-            <li><span class="white bold">Obyvatel:</span></li>
-            <li><span class="white bold">Nezaměstnaní:</span></li>
         </ul>
         <ul>
             <li><span class="white bold">Jídlo:</span></li>
@@ -18,30 +18,30 @@
     </div>
     <div id="statistics-values">
         <ul>
-            <li><span class="value">{$land}</span></span></li>
-            <li><span class="value">2 568 566</span></span></li>
-            <li><span class="value">86 455</span></span></li>
-            <li><span class="value">0</span></span></li>
+            <li><span class="value">{$data['unemployed']}</span></span></li>
+            <li><span class="value">{$data['citizens']}</span></span></li>
+            <li><span class="value">{$data['land']}</span></span></li>
+            <li><span class="value">{$data['power']}</span></span></li>
         </ul>
         <ul>
-            <li><span class="value">{$resources['food']}</span></li>
-            <li><span class="value">{$resources['gold']}</span></li>
-            <li><span class="value">{$resources['stones']}</span></li>
-            <li><span class="value">{$resources['weapons']}</span></li>
+            <li><span class="value">{$data['food']}</span></li>
+            <li><span class="value">{$data['gold']}</span></li>
+            <li><span class="value">{$data['stones']}</span></li>
+            <li><span class="value">{$data['weapons']}</span></li>
         </ul>
     </div>
     <div id="statistics-income">
         <ul>
-            <li>+100</li>
+            <li>+153</li>
             <li>+256</li>
             <li>0</li>
             <li>0</li>
         </ul>
         <ul>
-            <li>0</li>
-            <li>+1 000</li>
-            <li>+11 242</li>
-            <li>+1 125 235</li>
+            <li>{$data['farmer_gain']}</li>
+            <li>{$data['trader_gain'] + $data['alchemist_gain']}</li>
+            <li>{$data['miner_gain']}</li>
+            <li>{$data['blacksmith_gain']}</li>
         </ul>
     </div>
     <div id="statistics-outcome">
