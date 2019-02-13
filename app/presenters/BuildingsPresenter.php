@@ -36,7 +36,6 @@ class BuildingsPresenter extends BasePresenter {
             'blacksmith',
         );
         $this->data = $this->buildingsManager->getBuildingsData($userID);
-        
         foreach ($buildings as $building) {
             $this->data[$building.'_bonus'] = Buildings::getBonus($this->data[$building.'_building'], $this->data[$building])*100;
         }
@@ -44,7 +43,7 @@ class BuildingsPresenter extends BasePresenter {
     }
 
     protected function createComponentBuildingsForm() {
-        return $this->buildingsFormFactory->create();
+        return $this->buildingsFormFactory->create($this->data);
     }
 
 }

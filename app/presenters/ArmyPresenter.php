@@ -5,6 +5,7 @@ namespace App\Presenters;
 use App\Presenters\BasePresenter;
 use App\Model\ArmyManager;
 use App\Forms\ArmyFormFactory;
+Use App\Classes\Number;
 
 /**
  * Presenter pro vykreslování přehledu profesí
@@ -27,11 +28,11 @@ class ArmyPresenter extends BasePresenter {
     public function renderDefault() {
         $userID = $this->user->identity->getId();
         $this->data = $this->armyManager->getArmyData($userID);
-        dump($this->data);
+        $this->template->data = Number::addSpacing($this->data);
     }
 
     protected function createComponentArmyForm() {
-        return $this->armyFormFactory->create();
+        return $this->armyFormFactory->create($this->data);
     }
 
 }

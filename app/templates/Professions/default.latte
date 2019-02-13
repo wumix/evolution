@@ -1,53 +1,56 @@
 {block content}
 <div class="title">Profese</div>
 <div class="professions-container">
-    <div class="minor-title">Profese</div>
+    <div class="minor-title">Přehled profesí</div>
     <div class="professions-header-container">
         <div class="professions-label-title">Profese</div>
         <div class="professions-ammount-title">Aktuální počet</div>
         <div class="professions-trained-title">Zaučeno</div>
-        <div class="professions-earnings-title">Zisk</div>    
+        <div class="professions-earnings-title">Zisk</div> 
+        <div class="professions-form"></div>
     </div>
     <form n:name=professionsForm>
-    <div class="professions-label">
-        Farmáři <br>
-        Obchodníci <br>
-        Alchymisti <br>
-        Zednící <br>       
-        Kameníci <br>
-        Kováři <br>
-    </div>
-    <div class="professions-ammount">
-        {$data['farmer']} <br>
-        {$data['trader']} <br>
-        {$data['alchemist']} <br>
-        {$data['builder']} <br>
-        {$data['miner']} <br>
-        {$data['blacksmith']} <br>
-    </div>
-    <div class="professions-trained">
-        100% <br>
-        100% <br>
-        58% <br>
-        16% <br>
-        16% <br>
-        89% <br>
-    </div>
-    <div class="professions-earnings">
-        {$data['farmer_gain']} <br>
-        {$data['trader_gain']} <br>
-        {$data['alchemist_gain']} <br>
-        {$data['builder_gain']} <br>
-        {$data['miner_gain']} <br>
-        {$data['blacksmith_gain']} <br>
-    </div>
-    <div class="professions-form">
-        <input n:name=farmer><input n:name=addfarmer class="btn btn-default"><input n:name=checkfarmer><input n:name=remfarmer class="btn btn-default"><br>
-        <input n:name=trader><input n:name=addtrader class="btn btn-default"><input n:name=checktrader><input n:name=remtrader class="btn btn-default"><br>
-        <input n:name=alchemist><input n:name=addalchemist class="btn btn-default"><input n:name=checkalchemist><input n:name=remalchemist class="btn btn-default"><br>
-        <input n:name=builder><input n:name=addbuilder class="btn btn-default"><input n:name=checkbuilder ><input n:name=rembuilder  class="btn btn-default"><br>
-        <input n:name=miner><input n:name=addminer class="btn btn-default"><input n:name=checkminer><input n:name=remminer class="btn btn-default"><br>
-        <input n:name=blacksmith><input n:name=addblacksmith class="btn btn-default"><input n:name=checkblacksmith><input n:name=remblacksmith class="btn btn-default"><br>
+    <div class="professions-content-container">
+        <div class="professions-label">
+            Farmáři <br>
+            Obchodníci <br>
+            Alchymisti <br>
+            Zednící <br>       
+            Kameníci <br>
+            Kováři <br>
+        </div>
+        <div class="professions-ammount">
+            {$data['farmer']} <br>
+            {$data['trader']} <br>
+            {$data['alchemist']} <br>
+            {$data['builder']} <br>
+            {$data['miner']} <br>
+            {$data['blacksmith']} <br>
+        </div>
+        <div class="professions-trained">
+            100% <br>
+            100% <br>
+            58% <br>
+            16% <br>
+            16% <br>
+            89% <br>
+        </div>
+        <div class="professions-earnings">
+            {$data['farmer_gain']} <br>
+            {$data['trader_gain']} <br>
+            {$data['alchemist_gain']} <br>
+            {$data['builder_gain']} <br>
+            {$data['miner_gain']} <br>
+            {$data['blacksmith_gain']} <br>
+        </div>
+        <div class="professions-form">
+            <input n:name=farmer><input n:name=addfarmer class="btn btn-default"><input n:name=checkfarmer><input n:name=remfarmer class="btn btn-default"><br>
+            <input n:name=trader><input n:name=addtrader class="btn btn-default"><input n:name=checktrader><input n:name=remtrader class="btn btn-default"><br>
+            <input n:name=alchemist><input n:name=addalchemist class="btn btn-default"><input n:name=checkalchemist><input n:name=remalchemist class="btn btn-default"><br>
+            <input n:name=builder><input n:name=addbuilder class="btn btn-default"><input n:name=checkbuilder ><input n:name=rembuilder  class="btn btn-default"><br>
+            <input n:name=miner><input n:name=addminer class="btn btn-default"><input n:name=checkminer><input n:name=remminer class="btn btn-default"><br>
+            <input n:name=blacksmith><input n:name=addblacksmith class="btn btn-default"><input n:name=checkblacksmith><input n:name=remblacksmith class="btn btn-default"><br>
+        </div>
     </div>
     </form>
 </div>

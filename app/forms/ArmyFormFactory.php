@@ -16,6 +16,7 @@ class ArmyFormFactory {
     private $formFactory;
     private $armyManager;
     private $user;
+    private $data;
 
     public function __construct(
             FormFactory $factory,
@@ -31,61 +32,52 @@ class ArmyFormFactory {
      * Vytváří a vrací formulář pro stavění a bourání budov
      * @return Form formulář pro automatické nakupování pozemků
      */
-    public function create() 
+    public function create($data) 
     {
+        $this->data = $data;
         $race = $this->user->identity->data['race'];
+        $units = array(
+            array('soldier1', Race::getSoldier1($race)),
+            array('soldier2', Race::getSoldier2($race)),
+            array('mage', 'Mág')
+        );
         $form = $this->formFactory->create();
-            $form->addText('soldier1', Race::getSoldier1($race))
+        for($i = 0; $i < count($units); $i++) {
+            $form->addText($units[$i][0], $units[$i][1])
                     ->addRule(FORM::INTEGER)
                     ->setDefaultValue(0)
                     ->setRequired(true)
                     ->addRule(FORM::MIN,'Musí být kladné číslo',0);
-            $form->addSubmit('addsoldier1', 'Naverbovat')
-                    ->onClick[] = [$this, 'soldierFormAdd'];
-            $form->addCheckbox('checksoldier1');
-            $form->addSubmit('remsoldier1', 'Propustit')
-                    ->onClick[] = [$this, 'soldierFormRemove'];
-            $form->addText('soldier2', Race::getSoldier2($race))
-                    ->addRule(FORM::INTEGER)
-                    ->setDefaultValue(0)
-                    ->setRequired(true)
-                    ->addRule(FORM::MIN,'Musí být kladné číslo',0);
-            $form->addSubmit('addsoldier2', 'Naverbovat')
-                    ->onClick[] = [$this, 'soldierFormAdd'];
-            $form->addCheckbox('checksoldier2');
-            $form->addSubmit('remsoldier2', 'Propustit')
-                    ->onClick[] = [$this, 'soldierFormRemove'];   
-        return $form;
+            $form->addSubmit('add'.$units[$i][0], 'Naverbovat');
+            $form->addCheckbox('check'.$units[$i][0]);
+            $form->addSubmit('rem'.$units[$i][0], 'Propustit');
+        }
+        $form->onSuccess[] = [$this, 'armyFormSucceeded'];
+        return $form;     
     }
-
-    public function soldierFormAdd(\Nette\Forms\Controls\SubmitButton $button)
-    {
-        $form = $button->getForm();
-        $values = $form->getValues();
-        $soldier = substr($button->name,3);
+    
+    public function armyFormSucceeded (Form $form, \stdClass $values) {
+        $presenter = $form->getPresenter();
+        $unit = substr($form->isSubmitted()->name,3);
         $userID = $this->user->identity->getId();
-        $this->armyManager->addUnit($userID, $values[$soldier], $soldier);
-        $form->reset();
-        $form->setDefaults([
-            'soldier1' => 0,
-            'soldier2' => 0
-        ]);
-    }
-
-    public function soldierFormRemove(\Nette\Forms\Controls\SubmitButton $button) 
-    {
-        $form = $button->getForm();
-        $values = $form->getValues();
-        $soldier = substr($button->name,3);
-        if($values['check'.$soldier] == true) {
-            $userID = $this->user->identity->getId();
-            $this->armyManager->addUnit($userID, -$values[$soldier], $soldier);
+        if(substr($form->isSubmitted()->name,0,3) == 'add') {
+            $this->armyManager->addUnit($userID, $values[$unit], $unit);
+            $presenter->flashMessage('Jednotky byly naverbovány.', 'notice');
+        }
+        else if((substr($form->isSubmitted()->name,0,3) == 'rem') && ($values['check'.$unit] == true)) {
+            if($this->data[$unit] < $values[$unit]) {
+                $presenter->flashMessage('Nemůžeš odebrat víc jednotek, než je momentálně naverbováno.', 'error');
+            }
+            else {
+                $this->armyManager->addUnit($userID, -$values[$unit], $unit);
+                $presenter->flashMessage('Jednotky byly propuštěny.', 'notice');
+            }
         }
         $form->reset();
         $form->setDefaults([
             'soldier1' => 0,
-            'soldier2' => 0
+            'soldier2' => 0,
+            'mage' => 0
         ]);
     }
-
 }

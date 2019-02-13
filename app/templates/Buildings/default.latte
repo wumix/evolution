@@ -8,9 +8,11 @@
         <div class="buildings-ammount-title">Počet budov</div>
         <div class="buildings-workers-title">Počet pracovníků</div>
         <div class="buildings-bonus-title">Bonus</div>    
+        <div class="buildings-form"></div>
     </div>
+    
     <form n:name=buildingsForm class=form>
- 
+    <div class="buildings-content-container">
     <div class="buildings-label">
         Farmáři <br>
         Obchodníci <br>
@@ -43,13 +45,14 @@
         {$data['miner_bonus']}%<br>
         {$data['blacksmith_bonus']}%<br>
     </div>
-    <div style="float: left">
+    <div class="buildings-form">
         <input n:name=farmer><input n:name=addfarmer class="btn btn-default"><input n:name=checkfarmer><input n:name=remfarmer class="btn btn-default"><br>
         <input n:name=trader><input n:name=addtrader class="btn btn-default"><input n:name=checktrader><input n:name=remtrader class="btn btn-default"><br>
         <input n:name=alchemist><input n:name=addalchemist class="btn btn-default"><input n:name=checkalchemist><input n:name=remalchemist class="btn btn-default"><br>
         <input n:name=builder><input n:name=addbuilder class="btn btn-default"><input n:name=checkbuilder ><input n:name=rembuilder  class="btn btn-default"><br>
         <input n:name=miner><input n:name=addminer class="btn btn-default"><input n:name=checkminer><input n:name=remminer class="btn btn-default"><br>
         <input n:name=blacksmith><input n:name=addblacksmith class="btn btn-default"><input n:name=checkblacksmith><input n:name=remblacksmith class="btn btn-default"><br>
+    </div>
     </div>
         
     <br>
@@ -58,8 +61,10 @@
         <div class="buildings-label-title">Budovy</div>
         <div class="buildings-ammount-title">Počet budov</div>
         <div class="buildings-workers-title">Obyvatel/Obrana</div>
-        <div class="buildings-bonus-title">Bonus</div>    
+        <div class="buildings-bonus-title">Bonus</div> 
+        <div class="buildings-form"></div>
     </div>
+    <div class="buildings-content-container">
     <div class="buildings-label">
         Obytné domy <br>
         Věže <br>
@@ -76,9 +81,10 @@
         <br>
         40%<br>
     </div>
-    <div style="float: left">
+    <div class="buildings-form">
         <input n:name=house><input n:name=addhouse class="btn btn-default"><input n:name=checkhouse><input n:name=remhouse class="btn btn-default"><br>
         <input n:name=tower><input n:name=addtower class="btn btn-default"><input n:name=checktower><input n:name=remtower class="btn btn-default"><br>
+    </div>
     </div>
     
     </form>

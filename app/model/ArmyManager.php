@@ -9,12 +9,19 @@ class ArmyManager extends DatabaseManager {
 
     /** Konstanty pro práci s databází. */
     const
-            TABLE_NAME = 'army',
-            COLUMN_ID = 'users_id',
+            TABLE_ARMY = 'army',
+            TABLE_GUBERNATS = 'gubernats',
+            TABLE_RESOURCES = 'resources',
+            COLUMN_ID = 'army_fk',
             COLUMN_SOLDIER1= 'soldier1',
             COLUMN_SOLDIER2 = 'soldier2',
             COLUMN_MAGE = 'mage';
 
+    /**
+     * Získá data do šablony
+     * @param int $userID
+     * @return array $data
+     */
     public function getArmyData ($userID) {
         $data = (array) $this->database->query('SELECT gubernats.unemployed, resources.gold, resources.weapons, army.* '
                 . 'FROM gubernats '
@@ -22,18 +29,6 @@ class ArmyManager extends DatabaseManager {
                 . 'LEFT JOIN army ON gubernats.gubernats_id = army.army_fk '
                 . 'WHERE gubernats.gubernats_fk = ?',$userID)->fetch();
         return $data;
-    }
-
-    /**
-     * Vrátí počet jednotlivých jednotek
-     * @param int $userID ID hráče
-     * @return Array počet jednotlivých jednotek
-     */
-    public function getArmy($userID) {
-
-        $army = $this->database->table(self::TABLE_NAME)->where(self::COLUMN_ID, $userID)->fetch();
-        $army->toArray();
-        return $army;
     }
 
     /**
@@ -46,7 +41,7 @@ class ArmyManager extends DatabaseManager {
 
         $this->database->query('UPDATE ' . self::TABLE_NAME . ' SET', [
             $unit.'+=' => $units,
-                ], 'WHERE users_userID = ?', $userID);
+                ], 'WHERE army_fk = ?', $userID);
     }
 
 }

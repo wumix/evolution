@@ -48,46 +48,29 @@ class ProfessionsFormFactory {
                     ->setDefaultValue(0)
                     ->setRequired(true)
                     ->addRule(FORM::MIN,'Musí být kladné číslo',0);
-            $form->addSubmit('add'.$professions[$i][0], 'Zaměstnat')
-                    ->onClick[] = [$this, 'professionsFormAdd'];
+            $form->addSubmit('add'.$professions[$i][0], 'Zaměstnat');
             $form->addCheckbox('check'.$professions[$i][0]);
-            $form->addSubmit('rem'.$professions[$i][0], 'Propustit')
-                    ->onClick[] = [$this, 'professionsFormRemove'];
+            $form->addSubmit('rem'.$professions[$i][0], 'Propustit');
         }
-
-        return $form;
+        $form->onSuccess[] = [$this, 'professionsFormSucceeded'];
+        return $form;  
     }
-
-    public function professionsFormAdd(\Nette\Forms\Controls\SubmitButton $button)
-    {
-        $form = $button->getForm();
-        $values = $form->getValues();
-        $profession = substr($button->name,3);
+    
+    public function professionsFormSucceeded (Form $form, \stdClass $values) {
+        $presenter = $form->getPresenter();
+        $profession = substr($form->isSubmitted()->name,3);
         $userID = $this->user->identity->getId();
-        $this->professionsManager->addProfession($userID, $values[$profession], $profession);
-        $form->reset();
-        $form->setDefaults([
-            'farmer' => 0,
-            'trader' => 0,
-            'alchemist' => 0,
-            'builder' => 0,
-            'miner' => 0,
-            'blacksmith' => 0
-        ]);
-    }
-
-    public function professionsFormRemove(\Nette\Forms\Controls\SubmitButton $button) 
-    {
-        $form = $button->getForm();
-        $values = $form->getValues();
-        $profession = substr($button->name,3);
-        if($values['check'.$profession] == true) {
+        if(substr($form->isSubmitted()->name,0,3) == 'add') {
+            $this->professionsManager->addProfession($userID, $values[$profession], $profession);
+            $presenter->flashMessage('Lidé byli zařazeni do zaměstnání.', 'notice');
+        }
+        else if((substr($form->isSubmitted()->name,0,3) == 'rem') && ($values['check'.$profession] == true)) {
             if($this->data[$profession] < $values[$profession]) {
-                $values[$profession] = $this->data['profession'];
+                $presenter->flashMessage('Nemůžeš odebrat víc lidí, než je momentálně zaměstnáno.', 'error');
             }
             else {
-            $userID = $this->user->identity->getId();
-            $this->professionsManager->addProfession($userID, -$values[$profession], $profession);
+                $this->professionsManager->addProfession($userID, -$values[$profession], $profession);
+                $presenter->flashMessage('Lidé byli propuštěni ze zaměstnání.', 'notice');
             }
         }
         $form->reset();
@@ -98,8 +81,7 @@ class ProfessionsFormFactory {
             'builder' => 0,
             'miner' => 0,
             'blacksmith' => 0
-        ]);
+        ]); 
     }
-
 }
 

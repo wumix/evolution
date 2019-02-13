@@ -1,4 +1,113 @@
 {block content}
-{control armyForm}
+<div class="title">Armáda</div>
+<div class="army-container">
+    <div class="minor-title">Celkový přehled armády</div>
+    <div class="army-unemployed">Nezaměstnaných obyvatel: <span class="brown">{$data['unemployed']}</span></div>
+    <div class="army-header-container">
+        <div class="army-unit-title">Jednotka</div>
+        <div class="army-ammount-title">Počet</div>
+        <div class="army-trained-title">Zaučeno</div>
+        <div class="army-attack-title">Útok</div>   
+        <div class="army-defense-title">Obrana</div> 
+        <div class="army-power-title">Síla celkem</div> 
+    </div>
+    <div class="army-content-container">
+        <div class="army-unit">
+            Paladin <br>
+            Rytíř <br>
+            Mág <br>
+        </div>
+        <div class="army-ammount">
+            {$data['soldier1']} <br>
+            {$data['soldier2']} <br>
+            {$data['mage']} <br>
+        </div>
+        <div class="army-trained">
+            100% <br>
+            100% <br>
+            100% <br>
+        </div>
+        <div class="army-attack">
+            <span class='green'>568 865</span>  <br>
+            <span class='green'>1 522 321</span>  <br>
+            <span class='blue'>326 586</span>  <br>
+        </div>
+        <div class="army-defense">
+            <span class='green'>568 865</span>  <br>
+            <span class='green'>1 522 321</span>  <br>
+            <span class='blue'>489 569</span>  <br>
+        </div>
+        <div class="army-power">
+            <span class='green'>568 865</span> <br>
+            <span class='green'>1 522 321</span> <br>
+            <span class='blue'>921 457</span> <br>
+        </div>
+    </div>
+        <div class="army-resources">Momentálně máš <span class="brown">{$data['gold']}</span> zlata a <span class="brown">{$data['weapons']}</span> zbraní.</div>
+    <form n:name=armyForm>
+        <div class="minor-title-center">Paladin</div>
+        <div class="army-unit-header-container">
+            <div class="army-unit-stats-title">O/Ú</div>
+            <div class="army-unit-gold-title">Zlato</div>
+            <div class="army-unit-weapons-title">Zbraně</div>
+            <div class="army-unit-avalible-title">Dostupných</div>
+        </div>          
+        <div class="army-unit-stats-container">
+            <div class="army-unit-stats"><span class="green">8/11</span></div>
+            <div class="army-unit-gold">860</div>
+            <div class="army-unit-weapons">2 100</div>
+            <div class="army-unit-avalible">1 386</div>
+        </div>
+        <div class="army-form-container">
+        <div class="army-form">     
+            <input n:name=soldier1><input n:name=addsoldier1 class="btn btn-default"><input n:name=checksoldier1><input n:name=remsoldier1 class="btn btn-default">
+        </div>
+        </div>
+        
+        <div class="minor-title-center">Rytíř</div>
+        <div class="army-unit-header-container">
+            <div class="army-unit-stats-title">O/Ú</div>
+            <div class="army-unit-gold-title">Zlato</div>
+            <div class="army-unit-weapons-title">Zbraně</div>
+            <div class="army-unit-avalible-title">Dostupných</div>
+        </div>
+          
+        <div class="army-unit-stats-container">
+            <div class="army-unit-stats"><span class="green">5/6</span></div>
+            <div class="army-unit-gold">580</div>
+            <div class="army-unit-weapons">1 100</div>
+            <div class="army-unit-avalible">2 386</div>
+        </div>
+        <div class="army-form-container">
+        <div class="army-form"> 
+            <input n:name=soldier2><input n:name=addsoldier2 class="btn btn-default"><input n:name=checksoldier2><input n:name=remsoldier2 class="btn btn-default"><br>
+        </div>
+        </div>
+        
+        <div class="minor-title-center">Mág</div>
+        <div class="army-unit-header-container">
+            <div class="army-unit-stats-title">O/Ú</div>
+            <div class="army-unit-gold-title">Zlato</div>
+            <div class="army-unit-weapons-title">Zbraně</div>
+            <div class="army-unit-avalible-title">Dostupných</div>
+        </div>          
+        <div class="army-unit-stats-container">
+            <div class="army-unit-stats"><span class="blue">10/12</span></div>
+            <div class="army-unit-gold">2 890</div>
+            <div class="army-unit-weapons">0</div>
+            <div class="army-unit-avalible">1 396</div>
+        </div>
+        <div class="army-form-container">
+        <div class="army-form">     
+            <input n:name=mage><input n:name=addmage class="btn btn-default"><input n:name=checkmage><input n:name=remmage class="btn btn-default">
+        </div>
+        </div>
+        </form>
+</div>
+    
+    
+            
+
+    
 
 

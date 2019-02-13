@@ -1,17 +1,33 @@
 
 {block content}
-Máš {$data['land']} pozemků a {$data['gold']} zlata. Jeden pozemek tě teď stojí {$data['landPrice']} zlata. Můžeš nakoupit maximálně {$data['avalibleLand']} pozemků.
-<form n:name=landPurchaseForm class=form>
-    Jednorázové nakoupení pozemků <br><input n:name=land><input n:name=buy class="btn btn-default">
-</form>
+<div class="title">Pozemky</div>
+<div class="land-container">
+    
+    <div class="minor-title">Jednorázový nákup pozemků</div>
+    <div class="land-land">Počet pozemků: <span class="brown">{$data['land']}</span></div>
+    <form n:name=landPurchaseForm class=form>
+        <div class="land-buy-container">
+            <div class="land-label">Počet pozemků: </div>
+            <div class="land-form"><input n:name=land><input n:name=buy class="btn btn-default"></div>
+        </div>
+    <div class="land-resources">Další pozemek stojí <span class="brown">{$data['landPrice']}</span> zlata.</div>
+    </form>
+    
+    <div class="minor-title">Automatický nákup pozemků</div>
+    <div class="land-land">Automaticky nakoupí pozemky za zvolenou část z příjmů zlata každý tah.</div>
+    <div class="land-buy-container">
+        <form n:name="autoLandPurchaseForm">
+            <div class="land-label">Procento z příjmů: </div>
+            <select n:name="percent">
+            {foreach $form['percent']->items as $key => $label}
+                <input n:name="percent:$key">    
+            {/foreach}
+            </select>
+        <input n:name=change class="btn btn-default">
+        <div class="land-resources">Momentálně máš <span class="brown">{$data['gold']}</span> zlata.</div>
+        </form>
+    </div>
+</div>
+    
 
-
-<form n:name=autoLandPurchaseForm class=form>
-    Automatické nakupování pozemků <br>
-    {foreach $form['percent']->items as $key => $label}
-        <label n:name=percent class="radio">{$key}</label>
-        <input n:name="percent:$key">    
-    {/foreach}
-    <input n:name=change class="btn btn-default">
-</form>
 
