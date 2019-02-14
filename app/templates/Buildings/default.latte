@@ -1,5 +1,9 @@
 {block content}
 <div class="title">Budovy</div>
+<div class="sub-menu">
+    <span class="active">[Základní budovy]</span>
+    <span><a n:href=Buildings:Special>[Speciální budovy]</a></span>
+</div>
 
 <div class="buildings-container">
     <div class="minor-title">Profesní budovy</div>
@@ -70,8 +74,8 @@
         Věže <br>
     </div>
     <div class="buildings-ammount">
-        {$data['house']}<br>
-        {$data['tower']}<br>
+        {$data['house_building']}<br>
+        {$data['tower_building']}<br>
     </div>
     <div class="buildings-workers">
         5 894<br>

@@ -4,5 +4,11 @@
     <li><a n:href=Professions:default>Profese</a></li>
     <li><a n:href=Buildings:default>Budovy</a></li>
     <li><a n:href=Army:default>Armáda</a></li>
+    {if $user->identity->data['aliances_fk'] !== null}
+    <li><a n:href=Aliance:Show>Aliance</a></li>
+    {else}
+    <li><a n:href=Aliance:Create>Aliance</a></li>
+    {/if}
+    <li><a n:href=Ranking:default>Žebříček</a></li>
     <li><a n:href=Gubernat:Logout>Odhlásit se</a></li>
 </ul>

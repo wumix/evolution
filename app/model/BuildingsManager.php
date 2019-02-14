@@ -28,16 +28,24 @@ class BuildingsManager extends DatabaseManager {
         return $data;      
     }
     
-    /**
-     * Vrátí počet jednotlivých budov
-     * @param int $userID ID hráče
-     * @return Array počet jednotlivých budov
-     */
-    public function getBuildings($userID) {
-
-        $buildings = $this->database->table(self::TABLE_NAME)->where(self::COLUMN_ID, $userID)->fetch();
-        $buildings->toArray();
-        return $buildings;
+    public function getSpecialBuildingsData($userID) {
+        $data = (array) $this->database->query('SELECT gubernats.special_building, special_buildings.* '
+                . 'FROM gubernats '
+                . 'LEFT JOIN special_buildings ON gubernats.gubernats_fk = special_buildings.special_buildings_fk '
+                . 'WHERE gubernats.gubernats_fk = ?',$userID)->fetch();
+        return $data;
+    }
+    
+    public function destroySpecialBuilding($userID, $building) {
+        $this->database->query('UPDATE special_buildings '
+                . 'SET '.$building.' = ? '
+                . 'WHERE special_buildings_fk = ?',$building, $userID);
+    }
+    
+    public function buildSpecialBuilding($building, $userID) {
+        $this->database->query('UPDATE gubernats '
+                . 'SET special_building = ? '
+                . 'WHERE gubernats_fk = ?',$building, $userID);
     }
 
     /**

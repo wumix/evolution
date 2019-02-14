@@ -94,6 +94,26 @@ form .error {
 .menu a:hover {
     text-decoration: underline;
 }
+.sub-menu {
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    width: 90%;
+    margin: 10px 5% 0px 5%;
+    padding: 2px 0 5px 0;
+    background-color: #1E3217;
+}
+.sub-menu a {
+    color: #C9BA8F;
+    text-decoration: none;
+}
+.sub-menu a:hover {
+    text-decoration: underline;
+}
+.active {
+    color: white;
+    text-decoration: underline;
+}
 .content {
     float: left;
     width: 85%;

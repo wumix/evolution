@@ -43,9 +43,13 @@ services:
         - App\Forms\LandPurchaseFormFactory
         - App\Forms\ProfessionsFormFactory
         - App\Forms\BuildingsFormFactory
+        - App\Forms\SpecialBuildingsFormFactory
         - App\Forms\ArmyFormFactory
+        - App\Forms\AlianceCreateFormFactory
         - App\Model\ResourcesManager
         - App\Model\GubernatManager
         - App\Model\ProfessionsManager
         - App\Model\BuildingsManager
         - App\Model\ArmyManager
+        - App\Model\AlianceManager
+        - App\Model\RankingManager
